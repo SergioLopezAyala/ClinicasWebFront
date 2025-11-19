@@ -1,0 +1,47 @@
+<div class="clinica-page">
+
+  <h1>Listado de Clínicas</h1>
+
+  <!-- Mensajes de estado -->
+  <div *ngIf="loading" class="alert info">
+    Cargando clínicas...
+  </div>
+
+  <div *ngIf="error" class="alert error">
+    {{ error }}
+  </div>
+
+  <section class="card listado">
+    <h2>Clínicas registradas</h2>
+
+    <table *ngIf="clinicas.length > 0; else noClinicas">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Camas</th>
+          <th>Teléfono</th>
+          <th>Ciudad</th>
+          <th>Fecha creación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of clinicas">
+          <td>{{ c.id }}</td>
+          <td>{{ c.nombre }}</td>
+          <td>{{ c.direccion }}</td>
+          <td>{{ c.cantidad_camas }}</td>
+          <td>{{ c.telefono }}</td>
+          <td>{{ c.ciudad }}</td>
+          <td>{{ c.fecha_creacion | date:'yyyy-MM-dd' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noClinicas>
+      <p class="empty">No hay clínicas registradas.</p>
+    </ng-template>
+  </section>
+
+</div>

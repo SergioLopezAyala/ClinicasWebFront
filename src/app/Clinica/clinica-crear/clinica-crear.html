@@ -1,0 +1,88 @@
+<div class="create-page">
+  <h1>Registrar nueva clínica</h1>
+
+  <div *ngIf="loading" class="alert info">
+    Guardando clínica...
+  </div>
+
+  <div *ngIf="error" class="alert error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="success" class="alert success">
+    {{ success }}
+  </div>
+
+  <section class="card">
+    <form (ngSubmit)="crearClinica()" autocomplete="off">
+
+      <div class="form-group">
+        <label for="nombre">Nombre *</label>
+        <input
+          id="nombre"
+          type="text"
+          [(ngModel)]="form.nombre"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección *</label>
+        <input
+          id="direccion"
+          type="text"
+          [(ngModel)]="form.direccion"
+          name="direccion"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad_camas">Cantidad de camas</label>
+        <input
+          id="cantidad_camas"
+          type="number"
+          min="0"
+          [(ngModel)]="form.cantidad_camas"
+          name="cantidad_camas"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input
+          id="telefono"
+          type="text"
+          [(ngModel)]="form.telefono"
+          name="telefono"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="ciudad">Ciudad *</label>
+        <input
+          id="ciudad"
+          type="text"
+          [(ngModel)]="form.ciudad"
+          name="ciudad"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="fecha_creacion">Fecha de creación</label>
+        <input
+          id="fecha_creacion"
+          type="date"
+          [(ngModel)]="form.fecha_creacion"
+          name="fecha_creacion"
+        />
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="loading">
+        Guardar clínica
+      </button>
+    </form>
+  </section>
+</div>
